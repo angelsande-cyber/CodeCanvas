@@ -1,0 +1,9 @@
+server/
+shared/
+node_modules
+.env
+.env.local
+.env.development
+.env.production
+*.log
+.DS_Store
