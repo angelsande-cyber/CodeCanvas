@@ -1,0 +1,58 @@
+[01:06:47.326] Running build in Washington, D.C., USA (East) – iad1
+[01:06:47.327] Build machine configuration: 2 cores, 8 GB
+[01:06:47.342] Cloning github.com/angelsande-cyber/CodeCanvas (Branch: main, Commit: ba72abf)
+[01:06:47.479] Previous build caches not available
+[01:06:47.610] Cloning completed: 268.000ms
+[01:06:47.746] Found .vercelignore
+[01:06:47.750] Removed 6 ignored files defined in .vercelignore
+[01:06:47.750]   /server/gemini.ts
+[01:06:47.751]   /server/index.ts
+[01:06:47.751]   /server/routes.ts
+[01:06:47.751]   /server/storage.ts
+[01:06:47.751]   /server/vite.ts
+[01:06:47.751]   /shared/schema.ts
+[01:06:48.049] Running "vercel build"
+[01:06:48.483] Vercel CLI 46.0.2
+[01:06:49.629] Installing dependencies...
+[01:06:54.621] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[01:06:54.635] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[01:06:59.722] 
+[01:06:59.723] added 503 packages in 10s
+[01:06:59.724] 
+[01:06:59.724] 67 packages are looking for funding
+[01:06:59.724]   run `npm fund` for details
+[01:07:01.674] 
+[01:07:01.675] up to date, audited 504 packages in 2s
+[01:07:01.675] 
+[01:07:01.676] 67 packages are looking for funding
+[01:07:01.676]   run `npm fund` for details
+[01:07:01.703] 
+[01:07:01.704] 11 vulnerabilities (3 low, 8 moderate)
+[01:07:01.704] 
+[01:07:01.704] To address issues that do not require attention, run:
+[01:07:01.705]   npm audit fix
+[01:07:01.705] 
+[01:07:01.705] To address all issues (including breaking changes), run:
+[01:07:01.705]   npm audit fix --force
+[01:07:01.706] 
+[01:07:01.706] Run `npm audit` for details.
+[01:07:02.253] [36mvite v5.4.19 [32mbuilding for production...[36m[39m
+[01:07:02.303] transforming...
+[01:07:02.572] Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+[01:07:02.573]   npx update-browserslist-db@latest
+[01:07:02.574]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[01:07:03.024] [32m✓[39m 4 modules transformed.
+[01:07:03.030] [31mx[39m Build failed in 754ms
+[01:07:03.030] [31merror during build:
+[01:07:03.030] [31m[vite]: Rollup failed to resolve import "@/components/ui/toaster" from "/vercel/path0/client/src/App.tsx".
+[01:07:03.030] This is most likely unintended because it can break your application at runtime.
+[01:07:03.030] If you do want to externalize this module explicitly add it to
+[01:07:03.030] `build.rollupOptions.external`[31m
+[01:07:03.030]     at viteWarn (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:65839:17)
+[01:07:03.031]     at onRollupWarning (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:65871:5)
+[01:07:03.031]     at onwarn (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:65534:7)
+[01:07:03.031]     at file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:19452:13
+[01:07:03.031]     at Object.logger [as onLog] (file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:21178:9)
+[01:07:03.031]     at ModuleLoader.handleInvalidResolvedId (file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:20067:26)
+[01:07:03.031]     at file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:20025:26[39m
+[01:07:03.050] Error: Command "cd client && npm install && npx vite build" exited with 1
