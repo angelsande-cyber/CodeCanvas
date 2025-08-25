@@ -1,0 +1,58 @@
+[00:44:34.746] Running build in Washington, D.C., USA (East) – iad1
+[00:44:34.747] Build machine configuration: 2 cores, 8 GB
+[00:44:34.812] Cloning github.com/angelsande-cyber/CodeCanvas (Branch: main, Commit: a52cb40)
+[00:44:34.960] Previous build caches not available
+[00:44:35.087] Cloning completed: 275.000ms
+[00:44:35.116] Found .vercelignore
+[00:44:35.119] Removed 6 ignored files defined in .vercelignore
+[00:44:35.120]   /server/gemini.ts
+[00:44:35.120]   /server/index.ts
+[00:44:35.120]   /server/routes.ts
+[00:44:35.120]   /server/storage.ts
+[00:44:35.120]   /server/vite.ts
+[00:44:35.120]   /shared/schema.ts
+[00:44:35.464] Running "vercel build"
+[00:44:35.948] Vercel CLI 46.0.2
+[00:44:36.794] Installing dependencies...
+[00:44:41.559] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[00:44:41.589] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[00:44:46.498] 
+[00:44:46.498] added 503 packages in 9s
+[00:44:46.499] 
+[00:44:46.499] 67 packages are looking for funding
+[00:44:46.499]   run `npm fund` for details
+[00:44:49.372] 
+[00:44:49.372] up to date, audited 504 packages in 3s
+[00:44:49.373] 
+[00:44:49.373] 67 packages are looking for funding
+[00:44:49.374]   run `npm fund` for details
+[00:44:49.400] 
+[00:44:49.401] 11 vulnerabilities (3 low, 8 moderate)
+[00:44:49.401] 
+[00:44:49.402] To address issues that do not require attention, run:
+[00:44:49.402]   npm audit fix
+[00:44:49.403] 
+[00:44:49.403] To address all issues (including breaking changes), run:
+[00:44:49.403]   npm audit fix --force
+[00:44:49.403] 
+[00:44:49.404] Run `npm audit` for details.
+[00:44:49.523] 
+[00:44:49.523] > rest-express@1.0.0 build
+[00:44:49.524] > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+[00:44:49.524] 
+[00:44:49.785] [36mvite v5.4.19 [32mbuilding for production...[36m[39m
+[00:44:49.834] transforming...
+[00:44:50.081] Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+[00:44:50.081]   npx update-browserslist-db@latest
+[00:44:50.082]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[00:44:53.767] [32m✓[39m 1661 modules transformed.
+[00:44:53.972] rendering chunks...
+[00:44:53.979] computing gzip size...
+[00:44:53.995] [2m../dist/public/[22m[32mindex.html                 [39m[1m[2m  0.90 kB[22m[1m[22m[2m │ gzip:  0.50 kB[22m
+[00:44:53.996] [2m../dist/public/[22m[2massets/[22m[35mindex-AoOToi5x.css  [39m[1m[2m 59.61 kB[22m[1m[22m[2m │ gzip: 10.78 kB[22m
+[00:44:53.996] [2m../dist/public/[22m[2massets/[22m[36mindex-DVg18GcL.js   [39m[1m[2m266.37 kB[22m[1m[22m[2m │ gzip: 87.07 kB[22m
+[00:44:53.997] [32m✓ built in 4.19s[39m
+[00:44:54.025] ✘ [ERROR] The entry point "server/index.ts" cannot be marked as external
+[00:44:54.026] 
+[00:44:54.029] 1 error
+[00:44:54.040] Error: Command "cd client && npm install && npm run build" exited with 1
