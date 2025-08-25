@@ -78,43 +78,38 @@ export default function Home() {
           <div className="sosgen-title-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 100 100" className="lifebuoy-icon">
               <defs>
-                <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FF6B35"/>
-                  <stop offset="50%" stopColor="#F7931E"/>
-                  <stop offset="100%" stopColor="#FFD23F"/>
-                </linearGradient>
-                <linearGradient id="center-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#ffffff"/>
-                  <stop offset="100%" stopColor="#f8f9fa"/>
-                </linearGradient>
-                <filter id="professional-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feDropShadow dx="2" dy="4" stdDeviation="3" floodOpacity="0.3"/>
+                <filter id="clean-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="1" dy="2" stdDeviation="2" floodColor="#425563" floodOpacity="0.2"/>
                 </filter>
               </defs>
               
-              {/* Outer ring with gradient */}
-              <circle cx="50" cy="50" r="45" fill="url(#ring-gradient)" filter="url(#professional-shadow)"/>
+              {/* Outer ring - main structure */}
+              <circle cx="50" cy="50" r="44" fill="#009ca6" stroke="#425563" strokeWidth="2" filter="url(#clean-shadow)"/>
               
-              {/* Inner center circle */}
-              <circle cx="50" cy="50" r="22" fill="url(#center-gradient)"/>
+              {/* Inner center hole */}
+              <circle cx="50" cy="50" r="20" fill="#ffffff" stroke="#425563" strokeWidth="2"/>
               
-              {/* Safety stripes - alternating pattern */}
+              {/* Safety sections - alternating colors */}
+              <g fill="#64a70b">
+                <path d="M 50,6 A 44,44 0 0,1 81.11,18.89 L 64.14,35.86 A 20,20 0 0,0 50,30 Z"/>
+                <path d="M 81.11,81.11 A 44,44 0 0,1 50,94 L 50,70 A 20,20 0 0,0 64.14,64.14 Z"/>
+              </g>
+              
               <g fill="#ffffff">
-                <path d="M 50,5 A 45,45 0 0,1 81.82,18.18 L 66.87,33.13 A 22,22 0 0,0 50,28 Z"/>
-                <path d="M 81.82,81.82 A 45,45 0 0,1 50,95 L 50,72 A 22,22 0 0,0 66.87,66.87 Z"/>
-                <path d="M 18.18,81.82 A 45,45 0 0,1 5,50 L 28,50 A 22,22 0 0,0 33.13,66.87 Z"/>
-                <path d="M 18.18,18.18 A 45,45 0 0,1 50,5 L 50,28 A 22,22 0 0,0 33.13,33.13 Z"/>
+                <path d="M 18.89,81.11 A 44,44 0 0,1 6,50 L 30,50 A 20,20 0 0,0 35.86,64.14 Z"/>
+                <path d="M 18.89,18.89 A 44,44 0 0,1 50,6 L 50,30 A 20,20 0 0,0 35.86,35.86 Z"/>
               </g>
               
-              {/* Rope details */}
-              <g stroke="#e9ecef" strokeWidth="1" fill="none">
-                <circle cx="50" cy="50" r="34" strokeDasharray="3,2"/>
-                <circle cx="50" cy="50" r="37" strokeDasharray="2,1"/>
+              {/* Section dividers */}
+              <g stroke="#425563" strokeWidth="2" fill="none">
+                <line x1="50" y1="6" x2="50" y2="30"/>
+                <line x1="94" y1="50" x2="70" y2="50"/>
+                <line x1="50" y1="94" x2="50" y2="70"/>
+                <line x1="6" y1="50" x2="30" y2="50"/>
               </g>
               
-              {/* Center hole highlight */}
-              <circle cx="50" cy="50" r="22" fill="none" stroke="#dee2e6" strokeWidth="1"/>
-              <circle cx="50" cy="50" r="20" fill="none" stroke="#ffffff" strokeWidth="0.5" opacity="0.7"/>
+              {/* Center reinforcement ring */}
+              <circle cx="50" cy="50" r="20" fill="none" stroke="#425563" strokeWidth="2"/>
             </svg>
             <h1 className="sosgen-title">SOSGEN</h1>
           </div>
