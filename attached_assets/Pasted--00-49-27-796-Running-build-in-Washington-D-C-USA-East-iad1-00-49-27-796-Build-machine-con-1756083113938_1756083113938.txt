@@ -1,0 +1,63 @@
+[00:49:27.796] Running build in Washington, D.C., USA (East) – iad1
+[00:49:27.796] Build machine configuration: 2 cores, 8 GB
+[00:49:27.831] Cloning github.com/angelsande-cyber/CodeCanvas (Branch: main, Commit: dd6155f)
+[00:49:27.839] Skipping build cache, deployment was triggered without cache.
+[00:49:28.058] Cloning completed: 227.000ms
+[00:49:28.088] Found .vercelignore
+[00:49:28.091] Removed 6 ignored files defined in .vercelignore
+[00:49:28.091]   /server/gemini.ts
+[00:49:28.091]   /server/index.ts
+[00:49:28.091]   /server/routes.ts
+[00:49:28.091]   /server/storage.ts
+[00:49:28.091]   /server/vite.ts
+[00:49:28.092]   /shared/schema.ts
+[00:49:28.423] Running "vercel build"
+[00:49:28.815] Vercel CLI 46.0.2
+[00:49:29.560] Installing dependencies...
+[00:49:34.319] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[00:49:34.335] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[00:49:39.394] 
+[00:49:39.394] added 503 packages in 10s
+[00:49:39.395] 
+[00:49:39.395] 67 packages are looking for funding
+[00:49:39.395]   run `npm fund` for details
+[00:49:41.289] 
+[00:49:41.290] up to date, audited 504 packages in 2s
+[00:49:41.290] 
+[00:49:41.291] 67 packages are looking for funding
+[00:49:41.291]   run `npm fund` for details
+[00:49:41.319] 
+[00:49:41.320] 11 vulnerabilities (3 low, 8 moderate)
+[00:49:41.320] 
+[00:49:41.320] To address issues that do not require attention, run:
+[00:49:41.320]   npm audit fix
+[00:49:41.321] 
+[00:49:41.321] To address all issues (including breaking changes), run:
+[00:49:41.321]   npm audit fix --force
+[00:49:41.322] 
+[00:49:41.322] Run `npm audit` for details.
+[00:49:41.930] [36mvite v5.4.19 [32mbuilding for production...[36m[39m
+[00:49:41.981] transforming...
+[00:49:42.236] Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+[00:49:42.236]   npx update-browserslist-db@latest
+[00:49:42.236]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[00:49:42.301] 
+[00:49:42.302] [1m[33mwarn[39m[22m - The `content` option in your Tailwind CSS configuration is missing or empty.
+[00:49:42.303] [1m[33mwarn[39m[22m - Configure your content sources or your generated CSS will be missing styles.
+[00:49:42.303] [1m[33mwarn[39m[22m - https://tailwindcss.com/docs/content-configuration
+[00:49:42.421] [32m✓[39m 3 modules transformed.
+[00:49:42.427] [31mx[39m Build failed in 473ms
+[00:49:42.428] [31merror during build:
+[00:49:42.428] [31m[vite:css] [postcss] /vercel/path0/client/src/index.css:1:1: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.[31m
+[00:49:42.428] file: [36m/vercel/path0/client/src/index.css:1:0[31m
+[00:49:42.428]     at Input.error (/vercel/path0/node_modules/postcss/lib/input.js:106:16)
+[00:49:42.429]     at AtRule.error (/vercel/path0/node_modules/postcss/lib/node.js:115:32)
+[00:49:42.429]     at processApply (/vercel/path0/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+[00:49:42.429]     at /vercel/path0/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+[00:49:42.429]     at /vercel/path0/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+[00:49:42.430]     at async plugins (/vercel/path0/node_modules/tailwindcss/lib/plugin.js:38:17)
+[00:49:42.430]     at async LazyResult.runAsync (/vercel/path0/node_modules/postcss/lib/lazy-result.js:261:11)
+[00:49:42.430]     at async compileCSS (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:36898:21)
+[00:49:42.430]     at async Object.transform (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:36171:11)
+[00:49:42.430]     at async transform (file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:19640:16)[39m
+[00:49:42.448] Error: Command "cd client && npm install && npx vite build" exited with 1
