@@ -1,0 +1,5 @@
+{
+  "name": "SOSGEN",
+  "description": "Genera mensajes de socorro MAYDAY RELAY a partir de lenguaje natural.",
+  "requestFramePermissions": []
+}
