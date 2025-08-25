@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import type { GeneratedMessagesResponse } from '@shared/schema';
@@ -9,6 +9,22 @@ export default function Home() {
   const [naturalInput, setNaturalInput] = useState('');
   const [editableMessages, setEditableMessages] = useState<GeneratedMessages | null>(null);
   const [copyStatus, setCopyStatus] = useState('Copiar Ambos');
+  const spanishTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const englishTextareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const autoResize = (textarea: HTMLTextAreaElement) => {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  };
+
+  useEffect(() => {
+    if (editableMessages) {
+      setTimeout(() => {
+        if (spanishTextareaRef.current) autoResize(spanishTextareaRef.current);
+        if (englishTextareaRef.current) autoResize(englishTextareaRef.current);
+      }, 100);
+    }
+  }, [editableMessages]);
 
   const generateMessageMutation = useMutation({
     mutationFn: async (naturalInput: string) => {
@@ -48,8 +64,11 @@ export default function Home() {
     }
   };
 
-  const handleMessageChange = (lang: 'es' | 'en', value: string) => {
+  const handleMessageChange = (lang: 'es' | 'en', value: string, textarea?: HTMLTextAreaElement) => {
     setEditableMessages(prev => prev ? { ...prev, [lang]: value } : null);
+    if (textarea) {
+      setTimeout(() => autoResize(textarea), 0);
+    }
   };
 
   return (
@@ -57,40 +76,50 @@ export default function Home() {
       <div className="sosgen-main">
         <header className="sosgen-header">
           <div className="sosgen-title-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" className="lifebuoy-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 100 100" className="lifebuoy-icon">
               <defs>
-                <filter id="drop_shadow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
-                  <feOffset dx="1" dy="1" result="offsetblur"/>
-                  <feComponentTransfer>
-                    <feFuncA type="linear" slope="0.5"/>
-                  </feComponentTransfer>
-                  <feMerge>
-                    <feMergeNode/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
+                <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FF6B35"/>
+                  <stop offset="50%" stopColor="#F7931E"/>
+                  <stop offset="100%" stopColor="#FFD23F"/>
+                </linearGradient>
+                <linearGradient id="center-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff"/>
+                  <stop offset="100%" stopColor="#f8f9fa"/>
+                </linearGradient>
+                <filter id="professional-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="2" dy="4" stdDeviation="3" floodOpacity="0.3"/>
                 </filter>
               </defs>
-              <g filter="url(#drop_shadow)">
-                <circle cx="12" cy="12" r="10" fill="white"/>
-                <path d="M12,2 A10,10 0 0,1 22,12" stroke="#F44336" strokeWidth="4" fill="none"/>
-                <path d="M12,22 A10,10 0 0,1 2,12" stroke="#F44336" strokeWidth="4" fill="none"/>
-                <path d="M12,2 A10,10 0 0,0 2,12" stroke="white" strokeWidth="4" fill="none"/>
-                <path d="M12,22 A10,10 0 0,0 22,12" stroke="white" strokeWidth="4" fill="none"/>
-                <circle cx="12" cy="12" r="6" fill="#f0f2f5"/>
-                <circle cx="12" cy="12" r="6" stroke="#dee2e6" strokeWidth="0.5" fill="none"/>
-                <g stroke="#A0A0A0" strokeWidth="1" fill="none">
-                  <path d="M19,12 C 21,10 21,14 19,12"/>
-                  <path d="M5,12 C 3,10 3,14 5,12"/>
-                  <path d="M12,5 C 10,3 14,3 12,5"/>
-                  <path d="M12,19 C 10,21 14,21 12,19"/>
-                </g>
+              
+              {/* Outer ring with gradient */}
+              <circle cx="50" cy="50" r="45" fill="url(#ring-gradient)" filter="url(#professional-shadow)"/>
+              
+              {/* Inner center circle */}
+              <circle cx="50" cy="50" r="22" fill="url(#center-gradient)"/>
+              
+              {/* Safety stripes - alternating pattern */}
+              <g fill="#ffffff">
+                <path d="M 50,5 A 45,45 0 0,1 81.82,18.18 L 66.87,33.13 A 22,22 0 0,0 50,28 Z"/>
+                <path d="M 81.82,81.82 A 45,45 0 0,1 50,95 L 50,72 A 22,22 0 0,0 66.87,66.87 Z"/>
+                <path d="M 18.18,81.82 A 45,45 0 0,1 5,50 L 28,50 A 22,22 0 0,0 33.13,66.87 Z"/>
+                <path d="M 18.18,18.18 A 45,45 0 0,1 50,5 L 50,28 A 22,22 0 0,0 33.13,33.13 Z"/>
               </g>
+              
+              {/* Rope details */}
+              <g stroke="#e9ecef" strokeWidth="1" fill="none">
+                <circle cx="50" cy="50" r="34" strokeDasharray="3,2"/>
+                <circle cx="50" cy="50" r="37" strokeDasharray="2,1"/>
+              </g>
+              
+              {/* Center hole highlight */}
+              <circle cx="50" cy="50" r="22" fill="none" stroke="#dee2e6" strokeWidth="1"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="#ffffff" strokeWidth="0.5" opacity="0.7"/>
             </svg>
             <h1 className="sosgen-title">SOSGEN</h1>
           </div>
           <p className="sosgen-description">
-            Describa la situación de socorro en lenguaje natural y la IA generará el mensaje para su estación costera.
+            Convierte descripciones de emergencias marítimas en mensajes MAYDAY RELAY estandarizados para comunicaciones radio costeras oficiales.
           </p>
         </header>
         
@@ -135,9 +164,10 @@ export default function Home() {
             <div className="sosgen-message-box">
               <h2 className="sosgen-message-label">Mensaje en Español</h2>
               <textarea 
+                ref={spanishTextareaRef}
                 className="sosgen-message-content" 
                 value={editableMessages.es}
-                onChange={(e) => handleMessageChange('es', e.target.value)}
+                onChange={(e) => handleMessageChange('es', e.target.value, e.target)}
                 aria-label="Mensaje editable en Español"
                 data-testid="textarea-spanish-message"
               />
@@ -146,9 +176,10 @@ export default function Home() {
 
               <h2 className="sosgen-message-label">Message in English</h2>
               <textarea 
+                ref={englishTextareaRef}
                 className="sosgen-message-content" 
                 value={editableMessages.en}
-                onChange={(e) => handleMessageChange('en', e.target.value)}
+                onChange={(e) => handleMessageChange('en', e.target.value, e.target)}
                 aria-label="Editable message in English"
                 data-testid="textarea-english-message"
               />

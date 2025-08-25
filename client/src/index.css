@@ -108,51 +108,90 @@
 .sosgen-container {
   display: flex;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 0;
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .sosgen-main {
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  background-color: var(--bg-main);
+  margin-top: 0;
 }
 
 .sosgen-header {
   text-align: center;
   margin-bottom: 2rem;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  padding: 3rem 2rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.sosgen-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" patternUnits="userSpaceOnUse" width="100" height="20"><path d="M0 10 Q25 0 50 10 T100 10 V20 H0 Z" fill="%23ffffff" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>') repeat;
+  animation: wave 20s linear infinite;
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100px); }
 }
 
 .sosgen-title-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .sosgen-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--accent-color);
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ffffff;
   margin: 0;
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
+  letter-spacing: 0.1em;
+  background: linear-gradient(45deg, #ffffff, #f0f8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .sosgen-description {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  max-width: 600px;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.95);
+  max-width: 800px;
   margin: 0 auto;
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .sosgen-card {
   background-color: var(--bg-card);
-  padding: 2rem;
-  border-radius: 8px;
+  padding: 2.5rem;
+  margin: 0 2rem 2rem 2rem;
+  border-radius: 12px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px var(--shadow-color);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
 .sosgen-input-group {
@@ -168,15 +207,17 @@
 }
 
 .sosgen-textarea {
-  padding: 0.75rem;
+  padding: 1rem;
   background-color: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.1rem;
   resize: vertical;
   transition: border-color 0.2s, box-shadow 0.2s;
+  min-height: 200px;
+  width: 100%;
 }
 
 .sosgen-textarea:focus {
@@ -246,14 +287,19 @@
   color: var(--text-primary);
   font-family: var(--font-mono);
   font-size: 1.1rem;
-  flex-grow: 1;
-  resize: vertical;
+  resize: none;
   width: 100%;
-  padding: 0;
+  padding: 1rem;
   white-space: pre-wrap;
   word-wrap: break-word;
-  min-height: 300px;
+  background-color: #fafbfc;
+  border-radius: 6px;
+  border: 1px solid #e1e5e9;
+  min-height: auto;
+  height: auto;
+  overflow: hidden;
   text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .sosgen-message-content:focus {
@@ -286,6 +332,32 @@
 }
 
 .lifebuoy-icon {
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sosgen-title {
+    font-size: 2.5rem;
+  }
+  
+  .sosgen-header {
+    padding: 2rem 1rem;
+  }
+  
+  .sosgen-card {
+    margin: 0 1rem 1rem 1rem;
+    padding: 1.5rem;
+  }
+  
+  .lifebuoy-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .sosgen-description {
+    font-size: 1.1rem;
+  }
 }
