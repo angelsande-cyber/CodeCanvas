@@ -1,0 +1,59 @@
+[01:03:39.664] Running build in Washington, D.C., USA (East) – iad1
+[01:03:39.666] Build machine configuration: 2 cores, 8 GB
+[01:03:39.686] Cloning github.com/angelsande-cyber/CodeCanvas (Branch: main, Commit: 0ae12cc)
+[01:03:39.701] Skipping build cache, deployment was triggered without cache.
+[01:03:40.109] Cloning completed: 423.000ms
+[01:03:40.194] Found .vercelignore
+[01:03:40.204] Removed 6 ignored files defined in .vercelignore
+[01:03:40.205]   /server/gemini.ts
+[01:03:40.205]   /server/index.ts
+[01:03:40.205]   /server/routes.ts
+[01:03:40.205]   /server/storage.ts
+[01:03:40.205]   /server/vite.ts
+[01:03:40.205]   /shared/schema.ts
+[01:03:40.778] Running "vercel build"
+[01:03:41.225] Vercel CLI 46.0.2
+[01:03:42.113] Installing dependencies...
+[01:03:46.799] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[01:03:46.807] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[01:03:51.645] 
+[01:03:51.646] added 503 packages in 9s
+[01:03:51.646] 
+[01:03:51.646] 67 packages are looking for funding
+[01:03:51.646]   run `npm fund` for details
+[01:03:53.567] 
+[01:03:53.568] up to date, audited 504 packages in 2s
+[01:03:53.569] 
+[01:03:53.569] 67 packages are looking for funding
+[01:03:53.569]   run `npm fund` for details
+[01:03:53.595] 
+[01:03:53.596] 11 vulnerabilities (3 low, 8 moderate)
+[01:03:53.596] 
+[01:03:53.597] To address issues that do not require attention, run:
+[01:03:53.597]   npm audit fix
+[01:03:53.597] 
+[01:03:53.597] To address all issues (including breaking changes), run:
+[01:03:53.597]   npm audit fix --force
+[01:03:53.597] 
+[01:03:53.598] Run `npm audit` for details.
+[01:03:54.413] [36mvite v5.4.19 [32mbuilding for production...[36m[39m
+[01:03:54.462] transforming...
+[01:03:54.485] node:internal/process/promises:394
+[01:03:54.485]     triggerUncaughtException(err, true /* fromPromise */);
+[01:03:54.486]     ^
+[01:03:54.486] 
+[01:03:54.486] [Failed to load PostCSS config: Failed to load PostCSS config (searchPath: /vercel/path0/client): [Error] Loading PostCSS Plugin failed: No "exports" main defined in /vercel/path0/node_modules/@tailwindcss/vite/package.json
+[01:03:54.486] 
+[01:03:54.486] (@/vercel/path0/client/postcss.config.js)
+[01:03:54.486] Error: Loading PostCSS Plugin failed: No "exports" main defined in /vercel/path0/node_modules/@tailwindcss/vite/package.json
+[01:03:54.487] 
+[01:03:54.487] (@/vercel/path0/client/postcss.config.js)
+[01:03:54.487]     at load (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:33632:11)
+[01:03:54.487]     at file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:33657:16
+[01:03:54.487]     at Array.map (<anonymous>)
+[01:03:54.487]     at plugins (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:33656:8)
+[01:03:54.487]     at processResult (file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:33726:14)
+[01:03:54.488]     at file:///vercel/path0/node_modules/vite/dist/node/chunks/dep-C6uTJdX2.js:33856:14]
+[01:03:54.488] 
+[01:03:54.488] Node.js v22.18.0
+[01:03:54.502] Error: Command "cd client && npm install && npx vite build" exited with 1
