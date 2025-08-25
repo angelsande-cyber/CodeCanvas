@@ -1,39 +1,31 @@
 import { useState } from 'react';
-import { GeminiService, type GeneratedMessages } from '@/services/gemini';
+import { useMutation } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
+import type { GeneratedMessagesResponse } from '@shared/schema';
+
+type GeneratedMessages = GeneratedMessagesResponse;
 
 export default function Home() {
   const [naturalInput, setNaturalInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [editableMessages, setEditableMessages] = useState<GeneratedMessages | null>(null);
   const [copyStatus, setCopyStatus] = useState('Copiar Ambos');
 
+  const generateMessageMutation = useMutation({
+    mutationFn: async (naturalInput: string) => {
+      const response = await apiRequest('POST', '/api/generate-message', { naturalInput });
+      return await response.json() as GeneratedMessages;
+    },
+    onSuccess: (data) => {
+      setEditableMessages(data);
+    },
+    onError: (error: any) => {
+      console.error('Error generating message:', error);
+    },
+  });
+
   const handleGenerate = async () => {
     if (!naturalInput.trim()) return;
-
-    setIsLoading(true);
-    setError(null);
-    setEditableMessages(null);
-
-    try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.VITE_API_KEY || '';
-      if (!apiKey) {
-        throw new Error('No se ha configurado la clave de API de Gemini. Por favor, configure VITE_GEMINI_API_KEY en las variables de entorno.');
-      }
-
-      const geminiService = new GeminiService(apiKey);
-      const messages = await geminiService.generateMayдayMessages(naturalInput);
-      setEditableMessages(messages);
-    } catch (e) {
-      console.error(e);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError("Ocurrió un error inesperado al generar el mensaje. Por favor, inténtelo de nuevo.");
-      }
-    } finally {
-      setIsLoading(false);
-    }
+    generateMessageMutation.mutate(naturalInput);
   };
 
   const handleCopyBoth = async () => {
@@ -114,24 +106,27 @@ export default function Home() {
               value={naturalInput}
               onChange={(e) => setNaturalInput(e.target.value)}
               placeholder="Ej: Desde Coruña Radio, coordinado por MRCC Finisterre: Buque 'Aurora' (MMSI 224123456) con 5 POB tiene una vía de agua en 43°21'N 008°25'W."
-              disabled={isLoading}
+              disabled={generateMessageMutation.isPending}
               className="sosgen-textarea"
               data-testid="input-natural-description"
             />
             <button 
               className="sosgen-button" 
               onClick={handleGenerate} 
-              disabled={!naturalInput.trim() || isLoading}
+              disabled={!naturalInput.trim() || generateMessageMutation.isPending}
               data-testid="button-generate-message"
             >
-              {isLoading ? 'Generando...' : 'Generar Mensaje'}
+              {generateMessageMutation.isPending ? 'Generando...' : 'Generar Mensaje'}
             </button>
           </div>
         </div>
         
-        {error && (
+        {generateMessageMutation.error && (
           <div className="sosgen-error" data-testid="error-message">
-            {error}
+            {generateMessageMutation.error instanceof Error 
+              ? generateMessageMutation.error.message 
+              : 'Ocurrió un error inesperado al generar el mensaje. Por favor, inténtelo de nuevo.'
+            }
           </div>
         )}
 
